@@ -5,8 +5,7 @@
 
 class smart_array {
 private:
-	int size=0, size2=0;
-	int elem=0;
+	int size = 0;
 	int* arr;
 	int i = 0;
 public:
@@ -14,10 +13,11 @@ public:
 		this->size = a;
 		arr = new int[size];
 	}
+	smart_array(const smart_array&) = delete;
+	smart_array& operator = (const smart_array&) = delete;
 	void add_element(int a) {
-		this->elem = a;
 		if (i < size) {
-			arr[i] = elem;
+			arr[i] = a;
 			i++;
 		}
 		else {
@@ -25,11 +25,9 @@ public:
 		}
 	}
 	int get_element(int a) {
-		this->size2 = a;
-		if (size2 < size && size2 >= 0) {
-			return arr[size2];
-		}
-		else {
+		if (a < i && a >= 0) {
+			return arr[a];
+		} else {
 			throw std::runtime_error("There is no element with such an index in this array");
 		}
 	}
