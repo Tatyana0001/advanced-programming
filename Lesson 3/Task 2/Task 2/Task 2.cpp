@@ -31,7 +31,12 @@ public:
 		}
 	}
 	smart_array(const smart_array& other) {
-		arr = new int(*other.arr);
+		size = other.size;
+		arr = new int[size];
+		i = other.i;
+		for (int j=0; j < size; j++) {
+			arr[j] = other.arr[j];
+		}
 	}
 	smart_array &operator=(const smart_array& other) {
 		if (&other != this) {
@@ -59,11 +64,9 @@ public:
 		arr.add_element(1);
 		arr.add_element(4);
 		arr.add_element(155);
-
 		smart_array new_array(2);
-		new_array.add_element(44);
+		new_array.add_element(44); 
 		new_array.add_element(34);
-		
 		arr = new_array;
 	}
 	catch (const std::exception& ex) {
