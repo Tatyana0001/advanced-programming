@@ -8,9 +8,9 @@ template<class T>
 class table {
 private:
     T** tab;
-    T rows, cols;
+    int rows, cols;
 public:
-    table(T rows, T cols) {
+    table(int rows, int cols) {
         this->rows = rows;
         this->cols = cols;
         tab = new T * [rows];
@@ -18,6 +18,8 @@ public:
             tab[i] = new T[cols];
         }
     }
+    table(const table&) = delete;
+    table& operator=(const table&) = delete;
     T* operator[](int i) {
         return tab[i];
     }
@@ -37,7 +39,7 @@ public:
 
 int main()
 {
-    auto test = table<int>(2, 3);
+    table<int> test(2, 3);
     test[0][0] = 4;
     std::cout << test[0][0];
 }

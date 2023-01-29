@@ -4,16 +4,17 @@
 #include <iostream>
 #include <vector>
 
-template <typename T>
+template <class T>
 T sqr(T a) {
     return a * a;
 }
 
-template <typename T>
-void sqr(std::vector <T> &b) {
-    for (int n : b) {
-        std::cout << n * n << " ";
+template <>
+std::vector<int> sqr (std::vector <int> a) {
+    for (int &n : a) {
+        n = n * n;
     }
+    return a;
 }
 
 
@@ -29,7 +30,10 @@ int main()
         std::cout << n << " ";
     }
     std::cout << "\n";
+    std::vector<int> c = sqr(b);
     std::cout << "[OUT]: ";
-    sqr(b);
+    for (int n : c) {
+        std::cout << n << " ";
+    }
 }
 
