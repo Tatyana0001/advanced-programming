@@ -19,7 +19,7 @@ public:
         return ptr2;
     }
     ~unique_ptr() {
-        delete[] ptr;
+        delete ptr;
         std::cout << "destructor called\n";
     }
 };
