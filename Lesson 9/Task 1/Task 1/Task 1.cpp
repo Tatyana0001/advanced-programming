@@ -5,9 +5,8 @@
 #include <vector>
 
 template <class T>
-std::vector<std::string> move_vectors(T& two, T&& one) {
+void move_vectors(T& two, T&& one) {
     two = std::move(one);
-    return one, two;
 }
 
 int main()
