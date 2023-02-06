@@ -18,7 +18,7 @@ public:
         }
     }
     big_integer(big_integer&& other) noexcept {
-        *this = other;
+        arr = std::move(other.arr);
     }
     big_integer(big_integer& other) {
         *this = other;
