@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <vector>
-//#include <utility>
 #include<algorithm>
 
 class big_integer {
